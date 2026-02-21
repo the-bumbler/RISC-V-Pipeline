@@ -136,7 +136,7 @@ initial begin
 end
 
 initial begin
-    #9;
+    #9.9;
     rst_n = 1; 
     // Hazard inputs
     Rs1 = 5'h00;
@@ -173,66 +173,48 @@ initial begin
     RData2C = 50;
     #10;
     // Instruction: Rd = -100 + -50
-    PCC = 8;
-    PCPlus4C = 12;
     RdC = 5'h02;
     RData1C = -100;
     RData2C = -50;
     #10;
     // Instruction: Rd = -100 - 50
-    PCC = 12;
-    PCPlus4C = 16;
     RdC = 5'h03;
     RData1C = -100;
     RData2C = 50;
     ALUControlC = 5'b0_1_000;
     #10;
     // Instruction: Rd = 4.2b - 4.2b
-    PCC = 16;
-    PCPlus4C = 20;
     RdC = 5'h04;
     RData1C = 'hffff_ffff;
     RData2C = 'hffff_ffff;
     #10;
     // Instruction: Rd = 100 - 50
-    PCC = 20;
-    PCPlus4C = 24;
     RdC = 5'h05;
     RData1C = 100;
     RData2C = 50;
     ALUControlC = 5'b0_1_000;
     #10;
     // Instruction: Rd = -100 - 50
-    PCC = 20;
-    PCPlus4C = 24;
     RdC = 5'h05;
     RData1C = -100;
     RData2C = 50;
     #10;
     // Instruction: Rd = 100 - -50
-    PCC = 24;
-    PCPlus4C = 28;
     RdC = 5'h06;
     RData1C = 100;
     RData2C = -50;
     #10;
-    // Instruction: Rd = -2.1b - 2.b
-    PCC = 28;
-    PCPlus4C = 32;
+    // Instruction: Rd = -2.1b - 2.1b
     RdC = 5'h07;
     RData1C = 'h8000_0001;
     RData2C = 'hffff_ffff;
     #10;
     // Instruction: Rd = 2.1b - -2.b
-    PCC = 32;
-    PCPlus4C = 36;
     RdC = 5'h08;
     RData1C = 'hffff_ffff;
     RData2C = 'h8000_0001;
     #10;
     // Instruction: Rd = f0f0_0101 ^ 00f0_0f01
-    PCC = 36;
-    PCPlus4C = 40;
     RdC = 5'h09;
     RData1C = 'hf0f0_0101;
     RData2C = 'h00f0_0f01;
@@ -240,8 +222,6 @@ initial begin
     ALUControlC = 5'b0_0_100;
     #10;
     // Instruction: Rd = f0f0_0101 | 01f0_0f11
-    PCC = 40;
-    PCPlus4C = 44;
     RdC = 5'h0a;
     RData1C = 'hf0f0_0101;
     RData2C = 'h01f0_0f11;
@@ -249,8 +229,6 @@ initial begin
     ALUControlC = 5'b0_0_110;
     #10;
     // Instruction: Rd = f0f0_0101 & 01f0_0f11
-    PCC = 44;
-    PCPlus4C = 48;
     RdC = 5'h0b;
     RData1C = 'hf0f0_0101;
     RData2C = 'h01f0_0f11;
@@ -258,8 +236,6 @@ initial begin
     ALUControlC = 5'b0_0_111;
     #10;
     // Instruction: Rd = ffff_0000 << [00004]
-    PCC = 48;
-    PCPlus4C = 52;
     RdC = 5'h0c;
     RData1C = 'hffff_0000;
     RData2C = 'h0000_0004;
@@ -267,8 +243,6 @@ initial begin
     ALUControlC = 5'b0_0_001;
     #10;
     // Instruction: Rd = ffff_0000 >> [00004]
-    PCC = 52;
-    PCPlus4C = 56;
     RdC = 5'h0d;
     RData1C = 'hffff_0000;
     RData2C = 'h0000_0004;
@@ -276,8 +250,6 @@ initial begin
     ALUControlC = 5'b0_0_101;
     #10;
     // Instruction: Rd = ffff_0000 >>> [00004]
-    PCC = 56;
-    PCPlus4C = 60;
     RdC = 5'h0e;
     RData1C = 'hffff_0000;
     RData2C = 'h0000_0004;
@@ -285,8 +257,6 @@ initial begin
     ALUControlC = 5'b0_1_101;
     #10;
     // Instruction: Rd = -100 < 50
-    PCC = 60;
-    PCPlus4C = 64;
     RdC = 5'h0f;
     RData1C = -100;
     RData2C = 50;
@@ -294,15 +264,11 @@ initial begin
     ALUControlC = 5'b0_0_010;
     #10;
     // Instruction: Rd = 50 < -100
-    PCC = 64;
-    PCPlus4C = 68;
     RdC = 5'h10;
     RData1C = 50;
     RData2C = -100;
     #10;
     // Instruction: Rd = 100 < 50 (unsinged)
-    PCC = 68;
-    PCPlus4C = 72;
     RdC = 5'h11;
     RData1C = 100;
     RData2C = 50;
@@ -310,15 +276,101 @@ initial begin
     ALUControlC = 5'b0_0_011;
     #10;
     // Instruction: Rd = 50 < 100 (unsinged)
-    PCC = 72;
-    PCPlus4C = 76;
     RdC = 5'h12;
     RData1C = 50;
     RData2C = 100;
     Funct3C = 3'h3;
     ALUControlC = 5'b0_0_011;
     #10;
-    #11;
+    // I-Type
+    // Instruction: Rd = 100 + 15
+    RegWriteC = 1;
+    MemWriteC = 0;
+    JumpC = 0;
+    BranchC = 0;
+    ALUSrcC[0] = 1;
+    ALUSrcC[1] = 0;
+    ResultSrcC = 2'b00;
+    ALUOpC = 2'b01;
+    LinkRegCtrlC = 0;
+    ImmExtC = {{(DATA_WIDTH-12){1'b0}}, {12'h00f}};
+    RdC = 5'h13;
+    RData1C = 100;
+    RData2C = 50;
+    Funct3C = 3'h0;
+    ALUControlC = 5'b0_0_000;
+    #10;
+    // Instruction: Rd = 100 + 15
+    RdC = 5'h14;
+    ALUControlC = 5'b0_1_000;
+    #10;
+    // Instruction: Rd = 100 + (-16)
+    RdC = 5'h15;
+    ImmExtC = {{(DATA_WIDTH-12){1'b1}}, 12'hff0};
+    #10;
+    // B-Type 
+    // Instruction: if(100 == 100) PC += Imm
+    RegWriteC = 0;
+    MemWriteC = 0;
+    JumpC = 0;
+    BranchC = 1;
+    ALUSrcC[0] = 0;
+    ALUSrcC[1] = 0;
+    ResultSrcC = 2'b00;
+    ALUOpC = 2'b11;
+    LinkRegCtrlC = 0;
+    ImmExtC = {{(DATA_WIDTH-12){1'b0}}, 12'h00f};
+    RdC = 5'h16;
+    RData1C = 100;
+    RData2C = 100;
+    Funct3C = 3'h0;
+    ALUControlC = 5'b0_0_000;
+    #10;
+    // Instruction: if(100 != 100) PC += Imm
+    Funct3C = 3'h1;
+    #10;
+    // Instruction: if(100 < -50) PC += Imm
+    RData1C = 100;
+    RData2C = -50;
+    Funct3C = 3'h4;
+    #10;
+    // Instruction: if(50 < 100) PC += Imm
+    RData1C = 50;
+    RData2C = 100;
+    Funct3C = 3'h4;
+    #10
+    // Instruction: if(-50 >= 100) PC += Imm
+    RData1C = -50;
+    RData2C = 100;
+    Funct3C = 3'h5;
+    #10
+    // Instruction: if(-100 >= -150) PC += Imm
+    RData1C = -100;
+    RData2C = -150;
+    Funct3C = 3'h5;
+    #10
+    // Instruction: if(50 < 100) PC += Imm UNSIGNED
+    RData1C = 50;
+    RData2C = 100;
+    Funct3C = 3'h6;
+    #10
+    // Instruction: if(-100 < 100) PC += Imm UNSIGNED
+    RData1C = -100;
+    RData2C = 100;
+    Funct3C = 3'h6;
+    #10
+    // Instruction: if(-100 >= 100) PC += Imm UNSIGNED
+    RData1C = -100;
+    RData2C = 100;
+    Funct3C = 3'h7;
+    #10
+    // Instruction: if(100 >= -100) PC += Imm UNSIGNED
+    RData1C = -100;
+    RData2C = 100;
+    Funct3C = 3'h7;
+    #10
+    
+    #10.1;
     $finish;
 end
 

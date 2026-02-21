@@ -221,7 +221,7 @@ module ADDER #(
 );
 localparam BIT_WIDTH = 8; // bitwidth of CLA
 localparam MODULE_COUNT = DATA_WIDTH/BIT_WIDTH;
-localparam MSB = DATA_WIDTH;
+localparam MSB = DATA_WIDTH - 1;
 
 wire [DATA_WIDTH-1:0] B_ctrl;
 assign B_ctrl = B ^ {DATA_WIDTH{carry_in}};

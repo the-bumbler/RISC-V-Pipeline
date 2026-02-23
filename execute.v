@@ -20,6 +20,7 @@ module execute #(
     input      [1:0]            ResultSrcC,
     input      [1:0]            ALUOpC,
     input                       LinkRegCtrlC,
+    input                       UIControlC,
     // Immediate extended 
     input      [DATA_WIDTH-1:0] ImmExtC,
     // Destination address 
@@ -34,10 +35,10 @@ module execute #(
 
     // Hazard control input & output (non-clocked)
     // Rs Hazard control address input and output 
-    input      [4:0]            Rs1,
-    input      [4:0]            Rs2,
-    output     [4:0]            Rs1H,
-    output     [4:0]            Rs2H,
+    input      [4:0]            Rs1C,
+    input      [4:0]            Rs2C,
+    output     [4:0]            Rs1CH,
+    output     [4:0]            Rs2CH,
     // Hazard forward control
     input      [1:0]            ForwardAH,
     input      [1:0]            ForwardBH,
@@ -63,13 +64,15 @@ module execute #(
     output reg [DATA_WIDTH-1:0] MemWriteDataD,
     // ALU Result 
     output reg [DATA_WIDTH-1:0] ALUResultD,
+    // Immediate value for LUI and AUIPC instructions
+    output reg [DATA_WIDTH-1:0] UpperImmExtD,
     // Funct3 passthrough for load/store module (might not be used)
     output reg [2:0]            Funct3D
 );
 
 // Hazard control addresses
-assign Rs1H = Rs1;
-assign Rs2H = Rs2;
+assign Rs1CH = Rs1C;
+assign Rs2CH = Rs2C;
 
 // Hazard control Mux
 wire [DATA_WIDTH-1:0] ForwardSrcA, ForwardSrcB;
@@ -87,6 +90,10 @@ assign PCImmSrc = (LinkRegCtrlC) ? RData1C : PCC;
 
 // PC + Imm adder
 assign PCTargetA = PCImmSrc + ImmExtC;
+
+// LUI AUIPC Mux 
+wire [DATA_WIDTH-1:0] UpperImmExt;
+assign UpperImmExt = (UIControlC) ? PCTargetA : ImmExtC;
 
 // ALU wires
 reg signed [DATA_WIDTH-1:0] ALUResult;
@@ -195,6 +202,7 @@ always @(posedge clk or negedge rst_n) begin
         RdD <= 0;
         MemWriteDataD <= 0;
         ALUResultD <= 0;
+        UpperImmExtD <= 0;
         Funct3D <= 0;
     end else begin
         RegWriteD <= RegWriteC;
@@ -204,6 +212,7 @@ always @(posedge clk or negedge rst_n) begin
         RdD <= RdC;
         MemWriteDataD <= ForwardSrcB;
         ALUResultD <= ALUResult;
+        UpperImmExtD <= UpperImmExt;
         Funct3D <= Funct3C;
     end
 end

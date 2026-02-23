@@ -28,7 +28,6 @@ assign InstrAddr = PC;
 // Register assigments
 always @(posedge clk or negedge rst_n) begin
     if(~rst_n) begin
-        // Initilize registers to 0
         PC <= 0;
         InstrB <= 0;
         PCB <= 0;

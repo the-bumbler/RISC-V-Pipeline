@@ -1,5 +1,5 @@
 show_synth_%: %.v
-	yosys -p "read_verilog $<; proc; opt; show -colors 2 -width -signed"
+	yosys -q -p "read_verilog $<; proc; opt; select $*; show -colors 2 -width -signed"
 
 show_tb_%: %_tb.v
 	iverilog -o simulations/out.vvp $*_tb.v $*.v

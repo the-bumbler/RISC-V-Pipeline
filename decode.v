@@ -27,6 +27,7 @@ module decode #(
     output reg [1:0]            ALUOpC,
     output reg                  LinkRegCtrlC,
     output reg [4:0]            ALUControlC,
+    output reg                  UIControlC,
     // Immediate extended
     output reg [DATA_WIDTH-1:0] ImmExtC,
     // Destination address
@@ -61,6 +62,7 @@ wire [1:0] ALUOp;     // ALU control (00=do nothing, 01=accept funct, 10=add, 11
 wire LinkRegCtrl;     // control for Jalr mux (pass Rs1 to PC+Imm module instead of PC)
 wire [2:0] ImmGenSrc; // immediate generator signals for 5 types of immediate formats
 wire [4:0] ALUControl;
+wire UIControl;       // upper immediate mux control signal
 
 // Opcode parameters
 localparam OP_LOAD   = 7'b0000011;
@@ -105,6 +107,7 @@ assign ALUSrc[1] = (Opcode == OP_AUIPC) ? 1'b1 : 1'b0;
 assign ResultSrc = (Opcode == OP_LOAD) ? 2'b01 : (Opcode == OP_JAL | Opcode == OP_JALR) ? 2'b10 : (Opcode == OP_LUI) ? 2'b11 : 2'b00;
 assign ALUOp = (Opcode == OP_REG | Opcode == OP_IMM) ? 2'b01 : (Opcode == OP_LOAD | Opcode == OP_STORE | Opcode == OP_AUIPC) ? 2'b10 : (Opcode == OP_BRANCH) ? 2'b11 : 2'b00;
 assign LinkRegCtrl = (Opcode == OP_JALR) ? 1'b1 : 1'b0;
+assign UIControl = (Opcode == OP_AUIPC) ? 1'b1 : 1'b0;
 assign ImmGenSrc = (Opcode == OP_IMM) ? I_IMM : (Opcode == OP_STORE) ? S_IMM : (Opcode == OP_BRANCH) ? B_IMM : 
                    (Opcode == OP_AUIPC | Opcode == OP_LUI) ? U_IMM : (Opcode == OP_JAL | Opcode == OP_JALR) ? J_IMM : NO_IMM;
 
@@ -120,7 +123,7 @@ integer i;
 
 // Register File
 always @(negedge clk or negedge rst_n) begin
-    if(rst_n) begin
+    if(~rst_n) begin
         for(i = 0; i < 32; i = i + 1) begin
             RegisterFile[i] <= 0;
         end
@@ -143,11 +146,12 @@ always @(posedge clk or negedge rst_n) begin
         ALUOpC <= 0;
         LinkRegCtrlC <= 0;
         ALUControlC <= 0;
+        UIControlC <= 0;
         ImmExtC <= 0;
         RdC <= 0;
         RData1C <= 0;
         RData2C <= 0;
-        Funct7C <= 0;
+        //Funct7C <= 0;
         Funct3C <= 0;
         Rs1C <= 0;
         Rs2C <= 0;
@@ -167,6 +171,7 @@ always @(posedge clk or negedge rst_n) begin
         ALUOpC <= ALUOp;
         LinkRegCtrlC <= LinkRegCtrl;
         ALUControlC <= ALUControl;
+        UIControlC <= UIControl;
         // Immediate extension
         ImmExtC <= ImmExt;
         // Rd, rs1, rs2 addr

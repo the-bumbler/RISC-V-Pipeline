@@ -13,7 +13,7 @@ module core_top #(
     output                  WriteEn,
     output [DATA_WIDTH-1:0] MemAddress,
     output [DATA_WIDTH-1:0] MemStoreData,
-    output [DATA_WIDTH-1:0] MemLoadData
+    input  [DATA_WIDTH-1:0] MemLoadData
 );
 
 // A stage wires

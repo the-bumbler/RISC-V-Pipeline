@@ -28,7 +28,7 @@ module mem_write #(
 
     // Memory file input and output
     output                      WriteEn,
-    output reg [DATA_WIDTH-1:0] MemAddress,
+    output     [DATA_WIDTH-1:0] MemAddress,
     output reg [DATA_WIDTH-1:0] MemStoreData,
     input      [DATA_WIDTH-1:0] MemLoadData,
 
@@ -73,7 +73,7 @@ localparam HALF_DATA = DATA_WIDTH/2;
 // Load/Store module
 reg [DATA_WIDTH-1:0] MemData;
 always @(*) begin
-    if(~MemWriteD) begin // Store
+    if(MemWriteD) begin // Store
         case(Funct3D) 
             BYTE: MemStoreData = {{(DATA_WIDTH-8){MemWriteDataD[7]}}, MemWriteDataD[7:0]};
             HALF: MemStoreData = {{(DATA_WIDTH-HALF_DATA){MemWriteDataD[HALF_DATA-1]}}, MemWriteDataD[HALF_DATA-1:0]};

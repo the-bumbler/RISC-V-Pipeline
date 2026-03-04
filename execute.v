@@ -96,24 +96,21 @@ wire [DATA_WIDTH-1:0] UpperImmExt;
 assign UpperImmExt = (UIControlC) ? PCTargetA : ImmExtC;
 
 // ALU wires
-reg signed [DATA_WIDTH-1:0] ALUResult;
+//reg signed [DATA_WIDTH-1:0] ALUResult;
 
 // ADDER Wires
 wire carry_in;
-reg adder_enable;
-wire [DATA_WIDTH-1:0] adder_in_A; 
-wire [DATA_WIDTH-1:0] adder_in_B;
+wire adder_enable;
 wire [DATA_WIDTH-1:0] adder_result;
 wire [3:0] ZCNO;
 
-assign adder_in_A = ALU_A;
-assign adder_in_B = ALU_B;
+assign adder_enable = (ALUOpC == 2'b11) | (ALUOpC == 2'b10) | (ALUControlC[2:0] == 3'b000);
 assign carry_in = ((ALUOpC == 2'b11) | (ALUControlC[3] & ~ALUSrcC[0]));
 
 ADDER #(.DATA_WIDTH(DATA_WIDTH)) ADDER_SUBTRACTOR (
     .enable(adder_enable),
-    .A(adder_in_A), 
-    .B(adder_in_B),
+    .A(ALU_A), 
+    .B(ALU_B),
     .carry_in(carry_in),
     .result(adder_result),
     .ZCNO(ZCNO)
@@ -130,6 +127,7 @@ localparam SLT     = 3'b010;
 localparam SLTU    = 3'b011;
 
 // ALU
+/*
 always @(*) begin
     adder_enable = 0;
     case(ALUOpC)
@@ -164,6 +162,33 @@ always @(*) begin
         end
     endcase
 end
+*/
+
+always @(posedge clk or negedge rst_n) begin
+    if(~rst_n) begin
+        ALUResultD <= 0;
+    end else begin
+        case(ALUOpC) 
+            2'b11, 2'b10: ALUResultD <= adder_result;
+            2'b01: begin
+                if(~ALUControlC[4]) begin
+                    case(ALUControlC[2:0])
+                        ADD_SUB: ALUResultD <= adder_result;
+                        XOR: ALUResultD <= ALU_A ^ ALU_B;
+                        OR: ALUResultD <= ALU_A | ALU_B;
+                        AND: ALUResultD <= ALU_A & ALU_B;
+                        SLL: ALUResultD <= ALU_A << ALU_B[4:0];
+                        SRL_A: ALUResultD <= (ALUControlC[3]) ? ALU_A >>> ALU_B[4:0] : ALU_A >> ALU_B[4:0];
+                        SLT: ALUResultD <= ALU_A < ALU_B;
+                        SLTU: ALUResultD <= $unsigned(ALU_A) < $unsigned(ALU_B);
+                        default: ;
+                    endcase
+                end
+            end
+            default: ;
+        endcase
+    end
+end
 
 // Branch Funct3
 localparam BEQ  = 3'b000; // branch if equal
@@ -178,16 +203,15 @@ reg branch_logic;
 
 // Branch logic unit
 always @(*) begin
-    if(BranchC) begin
-        case(Funct3C) 
-            BEQ: branch_logic = ZCNO[3];
-            BNE: branch_logic = ~ZCNO[3];
-            BLT: branch_logic = (ZCNO[0] ^ ZCNO[1]);
-            BGE: branch_logic = ~(ZCNO[0] ^ ZCNO[1]) | ZCNO[3];
-            BLTU: branch_logic = (~ZCNO[2] & ZCNO[1]);
-            BGEU: branch_logic = (ZCNO[2] & ~ZCNO[1]) | ZCNO[3];
-        endcase
-    end
+    case(Funct3C) 
+        BEQ: branch_logic = (ZCNO[3]) & BranchC;
+        BNE: branch_logic = (~ZCNO[3]) & BranchC;
+        BLT: branch_logic = ((ZCNO[0] ^ ZCNO[1])) & BranchC;
+        BGE: branch_logic = (~(ZCNO[0] ^ ZCNO[1]) | ZCNO[3]) & BranchC;
+        BLTU: branch_logic = ((~ZCNO[2] & ZCNO[1])) & BranchC;
+        BGEU: branch_logic = ((ZCNO[2] & ~ZCNO[1]) | ZCNO[3]) & BranchC;
+        default: branch_logic = 0;
+    endcase
 end
 
 assign PCSrcA = branch_logic | JumpC;
@@ -201,17 +225,17 @@ always @(posedge clk or negedge rst_n) begin
         PCPlus4D <= 0;
         RdD <= 0;
         MemWriteDataD <= 0;
-        ALUResultD <= 0;
+        //ALUResultD <= 0;
         UpperImmExtD <= 0;
         Funct3D <= 0;
     end else begin
         RegWriteD <= RegWriteC;
-        ResultSrcD <= ResultSrcD;
+        ResultSrcD <= ResultSrcC;
         MemWriteD <= MemWriteC;
         PCPlus4D <= PCPlus4C;
         RdD <= RdC;
         MemWriteDataD <= ForwardSrcB;
-        ALUResultD <= ALUResult;
+        //ALUResultD <= ALUResult;
         UpperImmExtD <= UpperImmExt;
         Funct3D <= Funct3C;
     end
@@ -284,6 +308,9 @@ always @(*) begin
             carry[k+1] = g[k] | (p[k] & carry[k]);
         end
         sum = carry[BIT_WIDTH-1:0] ^ p;
+    end else begin
+        sum = 0;
+        carry = 0;
     end
 end
 

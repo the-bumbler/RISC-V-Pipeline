@@ -87,9 +87,9 @@ wire [4:0] RdC;
 wire [DATA_WIDTH-1:0] RData1C;
 wire [DATA_WIDTH-1:0] RData2C;
 wire [2:0] Funct3C;
-wire WrEnE;
-wire [4:0] WrAddrE;
-wire [DATA_WIDTH-1:0] WrDataE;
+//wire WrEnE;
+//wire [4:0] WrAddrE;
+//wire [DATA_WIDTH-1:0] WrDataE;
 wire [4:0] Rs1C;
 wire [4:0] Rs2C;
 
@@ -132,7 +132,7 @@ execute #(.DATA_WIDTH(DATA_WIDTH)) execute_inst (
     .MemWriteDataD(MemWriteDataD),
     .ALUResultD(ALUResultD),
     .UpperImmExtD(UpperImmExtD),
-    .Funct3D(Funct3D),
+    .Funct3D(Funct3D)
 );
 
 // D stage wires

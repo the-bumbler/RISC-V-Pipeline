@@ -108,7 +108,7 @@ assign ResultSrc = (Opcode == OP_LOAD) ? 2'b01 : (Opcode == OP_JAL | Opcode == O
 assign ALUOp = (Opcode == OP_REG | Opcode == OP_IMM) ? 2'b01 : (Opcode == OP_LOAD | Opcode == OP_STORE | Opcode == OP_AUIPC) ? 2'b10 : (Opcode == OP_BRANCH) ? 2'b11 : 2'b00;
 assign LinkRegCtrl = (Opcode == OP_JALR) ? 1'b1 : 1'b0;
 assign UIControl = (Opcode == OP_AUIPC) ? 1'b1 : 1'b0;
-assign ImmGenSrc = (Opcode == OP_IMM) ? I_IMM : (Opcode == OP_STORE) ? S_IMM : (Opcode == OP_BRANCH) ? B_IMM : 
+assign ImmGenSrc = (Opcode == OP_IMM | Opcode == OP_LOAD) ? I_IMM : (Opcode == OP_STORE) ? S_IMM : (Opcode == OP_BRANCH) ? B_IMM : 
                    (Opcode == OP_AUIPC | Opcode == OP_LUI) ? U_IMM : (Opcode == OP_JAL | Opcode == OP_JALR) ? J_IMM : NO_IMM;
 
 // ALU Control

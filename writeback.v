@@ -33,13 +33,13 @@ assign RdEH = RdE;
 assign WriteResultEH = RegWrData;
 
 // Reg write 
-assign RegWiteEn = RegWriteE; 
+assign RegWriteEn = RegWriteE; 
 assign RegWrAddr = RdE;
 
 // Result Mux
 assign RegWrData = (ResultSrcE == 2'b00) ? ALUResultE : 
                    (ResultSrcE == 2'b01) ? MemReadDataE :
                    (ResultSrcE == 2'b10) ? PCPlus4E :
-                   (ResultSrcE == 2'b11) ? UpperImmExtE;
+                   (ResultSrcE == 2'b11) ? UpperImmExtE : 0;
 
 endmodule

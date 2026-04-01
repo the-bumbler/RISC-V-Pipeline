@@ -1,0 +1,87 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Sat Feb 21 23:29:09 2026
+[*]
+[dumpfile] "/home/ethan/risc-v-pipeline/simulations/dump.vcd"
+[dumpfile_mtime] "Sat Feb 21 23:26:31 2026"
+[dumpfile_size] 27444
+[savefile] "/home/ethan/risc-v-pipeline/simulations/execute"
+[timestart] 215900
+[size] 1679 966
+[pos] 41 499
+*-14.400000 229000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] execute_tb.
+[treeopen] execute_tb.uut.
+[treeopen] execute_tb.uut.ADDER_SUBTRACTOR.
+[sst_width] 297
+[signals_width] 361
+[sst_expanded] 1
+[sst_vpaned_height] 274
+@28
+execute_tb.clk
+execute_tb.rst_n
+execute_tb.RegWriteC
+execute_tb.MemWriteC
+execute_tb.JumpC
+execute_tb.BranchC
+execute_tb.ALUSrcC[1:0]
+execute_tb.ResultSrcC[1:0]
+execute_tb.ALUOpC[1:0]
+execute_tb.LinkRegCtrlC
+@22
+execute_tb.Funct3C[2:0]
+@28
+execute_tb.ALUControlC[4:0]
+@200
+-
+@22
+execute_tb.RData1C[31:0]
+execute_tb.RData2C[31:0]
+execute_tb.ALUResultD[31:0]
+@200
+-
+@24
+execute_tb.RData1C_unsigned[31:0]
+execute_tb.RData2C_unsigned[31:0]
+execute_tb.ALUResultD_unsigned[31:0]
+@200
+-
+@420
+execute_tb.RData1C_signed[31:0]
+execute_tb.RData2C_signed[31:0]
+execute_tb.ALUResultD_signed[31:0]
+@200
+-
+@28
+execute_tb.uut.carry_in
+@22
+execute_tb.uut.ADDER_SUBTRACTOR.B_ctrl[31:0]
+execute_tb.uut.ADDER_SUBTRACTOR.result[31:0]
+@28
+execute_tb.uut.ADDER_SUBTRACTOR.carry_array[4:0]
+@200
+-
+@22
+execute_tb.RData1C[31:0]
+execute_tb.RData2C[31:0]
+execute_tb.ALUResultD[31:0]
+@200
+-
+@24
+execute_tb.RData1C_unsigned[31:0]
+execute_tb.RData2C_unsigned[31:0]
+@200
+-
+@420
+execute_tb.RData1C_signed[31:0]
+execute_tb.RData2C_signed[31:0]
+@200
+-
+@23
+execute_tb.Funct3C[2:0]
+@28
+execute_tb.uut.branch_logic
+execute_tb.uut.ZCNO[3:0]
+execute_tb.uut.ADDER_SUBTRACTOR.ZCNO[3:0]
+[pattern_trace] 1
+[pattern_trace] 0

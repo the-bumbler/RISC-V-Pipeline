@@ -1,0 +1,43 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Thu Jan 29 03:23:59 2026
+[*]
+[dumpfile] "/home/ethan/risc-v-pipeline/simulations/dump.vcd"
+[dumpfile_mtime] "Wed Jan 28 22:19:08 2026"
+[dumpfile_size] 6141
+[savefile] "/home/ethan/risc-v-pipeline/simulations/decode_settings.gtkw"
+[timestart] 37780
+[size] 2560 1304
+[pos] -51 229
+*-12.432298 60490 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] decode_tb.
+[sst_width] 297
+[signals_width] 243
+[sst_expanded] 1
+[sst_vpaned_height] 404
+@28
+decode_tb.clk
+decode_tb.rst_n
+@22
+decode_tb.PCB[31:0]
+decode_tb.PCPlus4B[31:0]
+@28
+decode_tb.WrEnE
+@22
+decode_tb.WrAddrE[4:0]
+decode_tb.WrDataE[31:0]
+@28
+decode_tb.InstrB[31:0]
+decode_tb.RegWriteC
+decode_tb.MemWriteC
+decode_tb.JumpC
+decode_tb.BranchC
+decode_tb.ALUSrcC[1:0]
+decode_tb.ResultSrcC[1:0]
+decode_tb.ALUOpC[1:0]
+decode_tb.LinkRegCtrlC
+@22
+decode_tb.RData1C[31:0]
+decode_tb.RData2C[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

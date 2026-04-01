@@ -1,0 +1,128 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Sun Feb  1 14:42:43 2026
+[*]
+[dumpfile] "/home/ethan/risc-v-pipeline/simulations/dump.vcd"
+[dumpfile_mtime] "Sun Feb  1 14:38:04 2026"
+[dumpfile_size] 6568
+[savefile] "/home/ethan/risc-v-pipeline/simulations/decode"
+[timestart] 88430
+[size] 1986 984
+[pos] 282 469
+*-12.201752 110000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] decode_tb.
+[sst_width] 297
+[signals_width] 528
+[sst_expanded] 1
+[sst_vpaned_height] 292
+@28
+decode_tb.clk
+decode_tb.rst_n
+@200
+-
+@c00028
+decode_tb.InstrB[31:0]
+@28
+[color] 5
+(0)decode_tb.InstrB[31:0]
+[color] 5
+(1)decode_tb.InstrB[31:0]
+[color] 5
+(2)decode_tb.InstrB[31:0]
+[color] 5
+(3)decode_tb.InstrB[31:0]
+[color] 5
+(4)decode_tb.InstrB[31:0]
+[color] 5
+(5)decode_tb.InstrB[31:0]
+[color] 5
+(6)decode_tb.InstrB[31:0]
+[color] 5
+(7)decode_tb.InstrB[31:0]
+[color] 5
+(8)decode_tb.InstrB[31:0]
+[color] 5
+(9)decode_tb.InstrB[31:0]
+[color] 5
+(10)decode_tb.InstrB[31:0]
+[color] 5
+(11)decode_tb.InstrB[31:0]
+[color] 5
+(12)decode_tb.InstrB[31:0]
+[color] 5
+(13)decode_tb.InstrB[31:0]
+[color] 5
+(14)decode_tb.InstrB[31:0]
+[color] 5
+(15)decode_tb.InstrB[31:0]
+[color] 5
+(16)decode_tb.InstrB[31:0]
+[color] 5
+(17)decode_tb.InstrB[31:0]
+[color] 5
+(18)decode_tb.InstrB[31:0]
+[color] 5
+(19)decode_tb.InstrB[31:0]
+[color] 5
+(20)decode_tb.InstrB[31:0]
+[color] 5
+(21)decode_tb.InstrB[31:0]
+[color] 5
+(22)decode_tb.InstrB[31:0]
+[color] 5
+(23)decode_tb.InstrB[31:0]
+[color] 5
+(24)decode_tb.InstrB[31:0]
+[color] 5
+(25)decode_tb.InstrB[31:0]
+[color] 5
+(26)decode_tb.InstrB[31:0]
+[color] 5
+(27)decode_tb.InstrB[31:0]
+[color] 5
+(28)decode_tb.InstrB[31:0]
+[color] 5
+(29)decode_tb.InstrB[31:0]
+[color] 5
+(30)decode_tb.InstrB[31:0]
+[color] 5
+(31)decode_tb.InstrB[31:0]
+@1401200
+-group_end
+@200
+-
+@28
+decode_tb.ALUSrcC[1:0]
+decode_tb.ResultSrcC[1:0]
+decode_tb.ALUOpC[1:0]
+decode_tb.LinkRegCtrlC
+decode_tb.RegWriteC
+decode_tb.MemWriteC
+decode_tb.JumpC
+decode_tb.BranchC
+@200
+-
+@28
+decode_tb.Funct3C[2:0]
+decode_tb.Funct7C[6:0]
+@200
+-
+@29
+decode_tb.ImmExtC[31:0]
+@200
+-
+@22
+decode_tb.Rs1C[4:0]
+decode_tb.Rs2C[4:0]
+decode_tb.RData1C[31:0]
+decode_tb.RData2C[31:0]
+decode_tb.RdC[4:0]
+@200
+-
+@28
+decode_tb.WrEnE
+@22
+decode_tb.WrAddrE[4:0]
+decode_tb.WrDataE[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

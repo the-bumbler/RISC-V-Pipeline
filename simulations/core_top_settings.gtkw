@@ -1,0 +1,275 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Wed Mar  4 19:22:33 2026
+[*]
+[dumpfile] "/home/ethan/risc-v-pipeline/simulations/dump.vcd"
+[dumpfile_mtime] "Wed Mar  4 19:03:17 2026"
+[dumpfile_size] 63654
+[savefile] "/home/ethan/risc-v-pipeline/simulations/core_top_settings.gtkw"
+[timestart] 209830
+[size] 2048 1016
+[pos] -1 -1
+*-12.404320 240800 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] core_top_tb.
+[treeopen] core_top_tb.uut.
+[treeopen] core_top_tb.uut.execute_inst.
+[sst_width] 297
+[signals_width] 338
+[sst_expanded] 1
+[sst_vpaned_height] 245
+@28
+core_top_tb.uut.fetch_inst.clk
+core_top_tb.uut.fetch_inst.rst_n
+@200
+-
+-Stage A: Fetch
+-
+@28
+core_top_tb.uut.fetch_inst.PCSrcA
+@22
+core_top_tb.uut.fetch_inst.PCTargetA[31:0]
+@200
+-
+-Stage B Output
+-
+@24
+core_top_tb.uut.fetch_inst.InstrAddr[31:0]
+@28
+core_top_tb.uut.fetch_inst.InstrB[31:0]
+@24
+core_top_tb.uut.fetch_inst.PCB[31:0]
+core_top_tb.uut.fetch_inst.PCPlus4B[31:0]
+@200
+-
+-Stage C Output
+-
+@24
+core_top_tb.uut.decode_inst.PCC[31:0]
+core_top_tb.uut.decode_inst.PCPlus4C[31:0]
+@200
+-
+@28
+core_top_tb.uut.decode_inst.RegWriteC
+core_top_tb.uut.decode_inst.ResultSrcC[1:0]
+core_top_tb.uut.decode_inst.MemWriteC
+core_top_tb.uut.decode_inst.JumpC
+core_top_tb.uut.decode_inst.BranchC
+core_top_tb.uut.decode_inst.ALUSrcC[1:0]
+core_top_tb.uut.decode_inst.ALUOpC[1:0]
+core_top_tb.uut.decode_inst.ALUControlC[4:0]
+core_top_tb.uut.decode_inst.LinkRegCtrlC
+core_top_tb.uut.decode_inst.UIControlC
+core_top_tb.uut.execute_inst.Funct3C[2:0]
+@200
+-
+@420
+core_top_tb.uut.decode_inst.RData1C[31:0]
+@22
+core_top_tb.uut.decode_inst.RData1C[31:0]
+@420
+core_top_tb.uut.decode_inst.RData2C[31:0]
+@22
+core_top_tb.uut.decode_inst.RData2C[31:0]
+@24
+core_top_tb.uut.decode_inst.ImmExtC[31:0]
+@420
+core_top_tb.uut.decode_inst.ImmExtC[31:0]
+@200
+-
+@22
+core_top_tb.uut.decode_inst.RdC[4:0]
+@200
+-
+@22
+core_top_tb.uut.decode_inst.Rs1C[4:0]
+core_top_tb.uut.decode_inst.Rs2C[4:0]
+@200
+-
+-Stage E Writeback Signals
+-
+@28
+core_top_tb.uut.decode_inst.WrEnE
+@22
+core_top_tb.uut.decode_inst.WrAddrE[4:0]
+@420
+core_top_tb.uut.decode_inst.WrDataE[31:0]
+@22
+core_top_tb.uut.decode_inst.WrDataE[31:0]
+@200
+-
+-
+@28
+core_top_tb.clk
+@200
+-
+@201
+-Stage D Outputs
+@200
+-
+@c00024
+core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+@28
+(0)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(1)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(2)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(3)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(4)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(5)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(6)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(7)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(8)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(9)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(10)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(11)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(12)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(13)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(14)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(15)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(16)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(17)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(18)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(19)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(20)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(21)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(22)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(23)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(24)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(25)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(26)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(27)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(28)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(29)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(30)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+(31)core_top_tb.uut.execute_inst.PCPlus4D[31:0]
+@1401200
+-group_end
+@200
+-
+@28
+core_top_tb.uut.execute_inst.RegWriteD
+core_top_tb.uut.execute_inst.ResultSrcD[1:0]
+core_top_tb.uut.execute_inst.MemWriteD
+@200
+-
+@24
+core_top_tb.uut.execute_inst.ALUResultD[31:0]
+@420
+core_top_tb.uut.execute_inst.ALUResultD[31:0]
+@24
+core_top_tb.uut.execute_inst.MemWriteDataD[31:0]
+core_top_tb.uut.execute_inst.MemWriteDataD[31:0]
+@200
+-
+@22
+core_top_tb.uut.execute_inst.RdD[4:0]
+@200
+-
+-INTERNAL EXECUTE SIGNALS
+@24
+core_top_tb.uut.execute_inst.ALU_A[31:0]
+@22
+core_top_tb.uut.execute_inst.ALU_A[31:0]
+@24
+core_top_tb.uut.execute_inst.ALU_B[31:0]
+@22
+core_top_tb.uut.execute_inst.ALU_B[31:0]
+core_top_tb.uut.execute_inst.adder_result[31:0]
+@200
+-Execute PC Outputs
+@28
+core_top_tb.uut.execute_inst.branch_logic
+core_top_tb.uut.execute_inst.BranchC
+core_top_tb.uut.execute_inst.ZCNO[3:0]
+core_top_tb.uut.execute_inst.PCSrcA
+@24
+core_top_tb.uut.execute_inst.PCTargetA[31:0]
+@200
+-
+-
+-
+-Stage E Outputs
+-
+@28
+core_top_tb.uut.mem_cycle_inst.RegWriteE
+core_top_tb.uut.mem_cycle_inst.ResultSrcE[1:0]
+@200
+-
+@24
+core_top_tb.uut.mem_cycle_inst.ALUResultE[31:0]
+@420
+core_top_tb.uut.mem_cycle_inst.ALUResultE[31:0]
+@c00420
+core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+@28
+(0)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(1)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(2)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(3)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(4)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(5)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(6)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(7)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(8)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(9)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(10)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(11)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(12)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(13)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(14)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(15)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(16)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(17)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(18)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(19)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(20)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(21)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(22)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(23)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(24)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(25)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(26)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(27)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(28)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(29)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(30)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+(31)core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+@1401200
+-group_end
+@22
+core_top_tb.uut.mem_cycle_inst.MemReadDataE[31:0]
+@200
+-
+@28
+core_top_tb.uut.mem_cycle_inst.MemWriteD
+core_top_tb.uut.mem_cycle_inst.WriteEn
+@24
+core_top_tb.uut.mem_cycle_inst.MemLoadData[31:0]
+@420
+core_top_tb.uut.mem_cycle_inst.MemLoadData[31:0]
+@24
+core_top_tb.uut.mem_cycle_inst.MemStoreData[31:0]
+@420
+core_top_tb.uut.mem_cycle_inst.MemStoreData[31:0]
+@200
+-
+-
+@28
+core_top_tb.uut.writeback_inst.ResultSrcE[1:0]
+@200
+-
+@28
+core_top_tb.uut.writeback_inst.RegWriteEn
+@22
+core_top_tb.uut.writeback_inst.RegWrAddr[4:0]
+@420
+core_top_tb.uut.writeback_inst.RegWrData[31:0]
+@22
+core_top_tb.uut.writeback_inst.RegWrData[31:0]
+@420
+core_top_tb.uut.writeback_inst.MemReadDataE[31:0]
+@200
+-
+@420
+core_top_tb.uut.writeback_inst.UpperImmExtE[31:0]
+[pattern_trace] 1
+[pattern_trace] 0
